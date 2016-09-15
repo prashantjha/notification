@@ -19,11 +19,12 @@ from datetime import timedelta
 
 # celery configuration
 djcelery.setup_loader()
-BROKER_URL = 'amqp://root:prashant21@127.0.0.1:5672//'
+BROKER_URL = "django://"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IMPORTS = ('autogenerate.tasks',)
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERYBEAT_SCHEDULE = {
     'sendNotification-every-seconds': {
         'task': 'autogenerate.tasks.sendNotification',
