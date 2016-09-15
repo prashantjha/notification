@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'djcelery',
+    'djkombu',
 ]
 
 MIDDLEWARE_CLASSES = [
