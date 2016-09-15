@@ -120,11 +120,11 @@ WSGI_APPLICATION = 'notification.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'd5scbku4rt05sh',
-    'HOST': 'ec2-174-129-3-207.compute-1.amazonaws.com',
+    'NAME': 'denrsd3tf5e794',
+    'HOST': 'ec2-54-243-203-143.compute-1.amazonaws.com',
     'PORT': 5432,
-    'USER': 'dculddqnnrtqds',
-    'PASSWORD': '_OKxksHFWjkdcVi97hoX1aw_sK'
+    'USER': 'rqacyzggxlbgok',
+    'PASSWORD': 'g3IR4rPrq5uYVUkGfJ0qJCgz5B'
     }
 }
 
