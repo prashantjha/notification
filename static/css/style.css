@@ -1,0 +1,14 @@
+.badge-notify{
+   background:red;
+   position:absolute;
+   top:0px;
+  }
+.notification-box {
+	padding: 10px 0;
+	text-align: center;
+	border: 1px solid #777;
+}
+.notification-box input {
+	float: right;
+	margin-right: 5px;
+}
