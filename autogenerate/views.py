@@ -112,17 +112,17 @@ def allnotification(request):
 
 def updatenotification(request, n_id):
     """ Toggle notification status"""
-    notification = Notification.objects.get(id=n_id).order_by('-dateCreated')
+    notification = Notification.objects.get(id=n_id)
     notification.checked = not(notification.checked)
     notification.save()
     return render_to_response('notifications.html')
 
 def hidenotification(request, n_id):
-    notification = Notification.objects.get(id=n_id).order_by('-dateCreated')
+    notification = Notification.objects.get(id=n_id)
     notification.hide = 1
     notification.save()
     user = request.user
-    notifications = Notification.objects.filter(user=user, hide=0)
+    notifications = Notification.objects.filter(user=user, hide=0).order_by('-dateCreated')
     c = {}
     c.update(csrf(request))
     c['request'] = request
