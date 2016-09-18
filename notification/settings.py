@@ -107,27 +107,27 @@ WSGI_APPLICATION = 'notification.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'notification',
-#         'USER': 'root',
-#         'PASSWORD': 'prashant21',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-#Prod
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'denrsd3tf5e794',
-    'HOST': 'ec2-54-243-203-143.compute-1.amazonaws.com',
-    'PORT': 5432,
-    'USER': 'rqacyzggxlbgok',
-    'PASSWORD': 'g3IR4rPrq5uYVUkGfJ0qJCgz5B'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'notification',
+        'USER': 'root',
+        'PASSWORD': 'prashant21',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+#Prod
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': 'denrsd3tf5e794',
+#     'HOST': 'ec2-54-243-203-143.compute-1.amazonaws.com',
+#     'PORT': 5432,
+#     'USER': 'rqacyzggxlbgok',
+#     'PASSWORD': 'g3IR4rPrq5uYVUkGfJ0qJCgz5B'
+#     }
+# }
 
 
 # Password validation

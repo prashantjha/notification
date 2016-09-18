@@ -63,7 +63,7 @@ def signup(request):
 def index(request):
     """ Home page"""
     user = request.user
-    notifications = Notification.objects.filter(user=user, hide=0)
+    notifications = Notification.objects.filter(user=user, hide=0).order_by('-dateCreated')
     newPostCount = Notification.objects.filter(checked=0,user=user, hide=0).count()
     c = {}
     c.update(csrf(request))
@@ -76,7 +76,7 @@ def index(request):
 def notification(request, page):
     page = int(page)
     user = request.user
-    notifications = Notification.objects.filter(user=user, hide=0)[0 : page*11 ]
+    notifications = Notification.objects.filter(user=user, hide=0).order_by('-dateCreated')[0 : page*11 ]
     c = {}
     c.update(csrf(request))
     c['request'] = request
@@ -87,7 +87,7 @@ def notification(request, page):
 def newnotification(request):
     """ check new notification """
     user = request.user
-    notifications = Notification.objects.filter(user=user, checked=0)
+    notifications = Notification.objects.filter(user=user, checked=0).order_by('-dateCreated')
     newPostCount = Notification.objects.filter(checked = 0,user=user, hide=0).count()
     c = {}
     c.update(csrf(request))
@@ -102,7 +102,7 @@ def allnotification(request):
     page = int(request.GET.get('page',1))
 
     user = request.user
-    notifications = Notification.objects.filter(user=user, hide=0)[0 : page*11 ]
+    notifications = Notification.objects.filter(user=user, hide=0).order_by('-dateCreated')[0 : page*11 ]
     c = {}
     c.update(csrf(request))
     c['request'] = request
@@ -112,13 +112,13 @@ def allnotification(request):
 
 def updatenotification(request, n_id):
     """ Toggle notification status"""
-    notification = Notification.objects.get(id=n_id)
+    notification = Notification.objects.get(id=n_id).order_by('-dateCreated')
     notification.checked = not(notification.checked)
     notification.save()
     return render_to_response('notifications.html')
 
 def hidenotification(request, n_id):
-    notification = Notification.objects.get(id=n_id)
+    notification = Notification.objects.get(id=n_id).order_by('-dateCreated')
     notification.hide = 1
     notification.save()
     user = request.user
