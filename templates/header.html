@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-manual navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -9,12 +9,24 @@
       </button>
     </div>
     <div class="collapse navbar-collapse">
+    <div class="navbar-header">
+          <a class="navbar-brand" href="/">WebSiteName</a>
+    </div>
       <ul class="nav navbar-nav navbar-right">
       {% if request.user.is_authenticated %}
-        <li>
-        <a href="/newnotification/">New<span class="badge badge-notify">{{ newPostCount }}</span></a><br>
-          
-        </li>
+        {% if newPostCount %}
+          <li id="notification_li">
+            <span id="notification_count">{{ newPostCount }}</span>
+            <a href="#" id="notificationLink">Notifications</a>
+            <div id="notificationContainer">
+              <div class="notificationTitle"><span>Notifications</span><span style="float: right;"><a href="{% url 'allread' %}">Mark All as read</a></span></div>
+              <div class="notificationheader">
+                {% include 'notificationbody.html' %}
+              </div>
+              <div id="notificationFooter"><a href="{% url 'allnotification' %}">See All</a></div>
+            </div>
+
+        {% endif %}
         <li><a href="{% url 'admin:logout' %}"> Logout </a></li> 
       {% else %}
         <li><a href="/signup/"> signup</a></li> 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="allnotification">
+	<div class="notificationTitle"><span>Your Notifications</span><span style="float: right;"><a href="{% url 'allread' %}">Mark All as read</a></span></div>
+	<div class="notificationheader">
+		{% include 'notificationbody.html' %}	
+	</div>
+
+<script src = "{% static "assets/js/jquery.js"%}"></script>
+<script type="text/javascript" src="{% static "assets/js/ajax.js" %}"></script>
+<script type="text/javascript">
+		
+
+</script>
+</div>
+{% endblock %}

@@ -1,3 +1,53 @@
+.navbar-manual {
+    background-color: #3B5998;
+    border-color: #eeeeee;
+}
+/* title */
+.navbar-manual .navbar-brand {
+    color: #FFFFFF;
+}
+.navbar-manual .navbar-brand:hover,
+.navbar-manual .navbar-brand:focus {
+    
+    color: #333333;
+}
+/* link */
+.navbar-manual .navbar-nav > li > a {
+    color: #fdfdfd;
+}
+.navbar-manual .navbar-nav > li > a:hover,
+.navbar-manual .navbar-nav > li > a:focus {
+    color: #333333;
+    background-color: #37538e;
+}
+.navbar-manual .navbar-nav > .active > a, 
+.navbar-manual .navbar-nav > .active > a:hover, 
+.navbar-manual .navbar-nav > .active > a:focus {
+    color: #333333;
+    background-color: #365899;
+}
+.navbar-manual .navbar-nav > .open > a, 
+.navbar-manual .navbar-nav > .open > a:hover, 
+.navbar-manual .navbar-nav > .open > a:focus {
+    color: #333333;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-manual .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-manual .navbar-nav > .dropdown > a:hover .caret,
+.navbar-manual .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-manual .navbar-nav > .open > a .caret, 
+.navbar-manual .navbar-nav > .open > a:hover .caret, 
+.navbar-manual .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
 .badge-notify{
    background:red;
    position:absolute;
@@ -11,4 +61,146 @@
 .notification-box input {
 	float: right;
 	margin-right: 5px;
+}
+#notification_li{position:relative}
+#notificationContainer {
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 40px;
+margin-left: -170px;
+width: 400px;
+z-index: 2;
+display: none;
+}
+#notification_count {
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 8px;
+position: absolute;
+margin-top: -2px;
+font-size: 10px;
+}
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+}
+.notificationTitle {
+z-index: 1000;
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #EEEEEE;
+/*width: 384px;*/
+border-bottom: 1px solid #dddddd;
+}
+.notificationsBody {
+padding: 0px 0px 0px 0px !important;
+min-height:300px;
+}
+#notificationContainer .notificationsBody{
+	max-height: 300px;
+	overflow: scroll;
+}
+#notificationFooter {
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+.notstatus{
+	border: 1px groove rgba(236, 235, 241, 0.17);
+	min-height:50px;
+	word-wrap: break-word;
+	
+	background-color: #e6e8ec;
+}
+
+.checked{
+	border: 1px groove rgba(236, 235, 241, 0.17);
+	min-height:50px;
+	word-wrap: break-word;
+	background-color: #f3f5f7;
+}
+
+.notificationsContent p{
+	width :88%;
+	margin: 0;
+	display: inline-block;
+}
+.notificationsContent >div{
+	width: 10%;
+	display: inline-block;
+	position: relative;
+}
+.notificationsContent >div .hide-post-popup {
+	position: absolute;
+	font-size: 8px;
+	top :16px;
+	right :-12px;
+	background-color :#FFFFFF;
+	width :100px;
+	cursor: pointer;
+	display: none;
+}
+.notificationsContent >div .hide-post-popup.visible {
+
+	display: block;
+}
+.notificationsContent >p{
+	padding: 12px 8px 2px 8px;
+	vertical-align: top;
+}
+.notificationsContent span{
+	float: right;
+	font-size: 11px;
+	width: 100%;
+	color: #6f99de;
+	/*height:10px;*/
+	opacity:0;
+
+}
+.notificationsContent:hover span{
+	opacity:1;
+}
+
+.hide-post{
+	margin-top: 5px;
+	cursor: pointer;
+}
+.check-post{
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.check-post-text{
+	background: red;
+}
+.hide-post-test{
+	background: teal;
+}
+.allnotification {
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+/*-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);*/
+/*overflow: scroll;*/
+position: absolute;
+top: 50px;
+width: 600px;
+/*height: 90%;*/
 }

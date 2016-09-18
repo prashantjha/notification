@@ -2,21 +2,6 @@
 {% load staticfiles %}
 {% block content %}
 <div class="view-post-template">
-	<div class="row" >
-		{% for notification in notifications %}
-	
-			<div class="col-xs-6 col-sm-4 col-lg-4 col-md-3 notification-box">
-					{{notification.name | safe}}
-					<input type="checkbox"  class="task-checked" 
-						value='{{ notification.id }}'
-						{% if notification.checked %}
-							checked="True"
-						{% endif %} 
-						>	
-			</div>	
-		{% endfor %}
-	</div>
 
-  
 </div>
 {% endblock %}

@@ -63,8 +63,8 @@ def signup(request):
 def index(request):
     """ Home page"""
     user = request.user
-    notifications = Notification.objects.filter(user=user)
-    newPostCount = Notification.objects.filter(checked = 0,user=user).count()
+    notifications = Notification.objects.filter(user=user, hide=0)
+    newPostCount = Notification.objects.filter(checked=0,user=user, hide=0).count()
     c = {}
     c.update(csrf(request))
     c['request'] = request
@@ -73,11 +73,22 @@ def index(request):
     return render_to_response('index.html',c,context_instance=RequestContext(request))
 
 @login_required(login_url='/admin/login/')
+def notification(request, page):
+    page = int(page)
+    user = request.user
+    notifications = Notification.objects.filter(user=user, hide=0)[0 : page*11 ]
+    c = {}
+    c.update(csrf(request))
+    c['request'] = request
+    c['notifications'] = notifications
+    return render_to_response('notificationbody.html',c,context_instance=RequestContext(request))
+
+@login_required(login_url='/admin/login/')
 def newnotification(request):
     """ check new notification """
     user = request.user
     notifications = Notification.objects.filter(user=user, checked=0)
-    newPostCount = Notification.objects.filter(checked = 0,user=user).count()
+    newPostCount = Notification.objects.filter(checked = 0,user=user, hide=0).count()
     c = {}
     c.update(csrf(request))
     c['request'] = request
@@ -85,9 +96,53 @@ def newnotification(request):
     c['newPostCount'] = newPostCount
     return render_to_response('index.html',c,context_instance=RequestContext(request))
 
+@login_required(login_url='/admin/login/')
+def allnotification(request):
+
+    page = int(request.GET.get('page',1))
+
+    user = request.user
+    notifications = Notification.objects.filter(user=user, hide=0)[0 : page*11 ]
+    c = {}
+    c.update(csrf(request))
+    c['request'] = request
+    c['notifications'] = notifications
+    return render_to_response('notifications.html',c,context_instance=RequestContext(request))
+
+
 def updatenotification(request, n_id):
     """ Toggle notification status"""
     notification = Notification.objects.get(id=n_id)
     notification.checked = not(notification.checked)
     notification.save()
-    return
+    return render_to_response('notifications.html')
+
+def hidenotification(request, n_id):
+    notification = Notification.objects.get(id=n_id)
+    notification.hide = 1
+    notification.save()
+    user = request.user
+    notifications = Notification.objects.filter(user=user, hide=0)
+    c = {}
+    c.update(csrf(request))
+    c['request'] = request
+    c['notifications'] = notifications
+    return render_to_response('notificationbody.html',c,context_instance=RequestContext(request))
+
+
+
+"""UTILITY"""    
+def allread(request):
+    user = request.user
+    notifications =Notification.objects.filter(user=user, checked=0).update(checked=1)
+    return HttpResponseRedirect('/')
+
+def allunhide(request):
+    user = request.user
+    notifications =Notification.objects.filter(user=user, hide=1).update(hide=0)
+    return HttpResponseRedirect('/')
+
+def allunread(request):
+    user = request.user
+    notifications =Notification.objects.filter(user=user, checked=1).update(checked=0)
+    return HttpResponseRedirect('/')

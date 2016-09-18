@@ -4,6 +4,7 @@ from notification.celery import app
 from django.core.mail import send_mail
 from autogenerate.views import get_online_users
 from autogenerate.models import Notification
+from random import randint
 
 
 @app.task
@@ -22,5 +23,5 @@ def sendNotification():
 	for user in online_users:
 		notification = Notification()
 		notification.user = user
-		notification.name = "Task genetated"
+		notification.name = "Task genetated " + str(randint(0,100))
 		notification.save()

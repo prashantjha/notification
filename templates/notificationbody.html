@@ -1,0 +1,18 @@
+<div class="notificationsBody" >
+    {% for notification in notifications %}
+      <div class="notificationsContent notstatus {% if notification.checked %} checked {% endif %}">
+            <p >{{notification.name | safe}}</p>
+
+            <div>
+                
+              <span class="hide-post glyphicon glyphicon-chevron-down"></span>
+              <span class="glyphicon check-post {% if notification.checked %}glyphicon-eye-open{% else %}glyphicon-eye-close{% endif %}" 
+                    data-toggle="tooltip" 
+                    data-placement="top"
+                    title="{% if notification.checked %}Read{% else %}Un Read{% endif %}"
+                    data-notification-id='{{notification.id}}' ></span>
+              <div class="hide-post-popup" data-notification-id='{{notification.id}}'>Hide this post</div>
+            </div> 
+      </div>
+    {% endfor %}
+</div>

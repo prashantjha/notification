@@ -8,6 +8,7 @@ class Notification(models.Model):
     name = models.CharField(max_length = 200)
     dateCreated = models.DateTimeField(auto_now_add = True, blank=True)
     checked = models.BooleanField(default=False)
+    hide = models.BooleanField(default=False)
     user = models.ForeignKey(User)
     def __unicode__(self):
         return u'%s' %(self.name+' '+str(self.dateCreated.date()))

@@ -7,6 +7,7 @@ import re
 compiledLists = {}
 
 class LastActivityMiddleware(object):
+    
     def process_request(self, request):
         if not request.user.is_authenticated():
             return
