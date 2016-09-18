@@ -28,7 +28,7 @@ CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERYBEAT_SCHEDULE = {
     'sendNotification-every-seconds': {
         'task': 'autogenerate.tasks.sendNotification',
-        'schedule': timedelta(seconds=1)
+        'schedule': timedelta(seconds=30)
     },
 }
 
